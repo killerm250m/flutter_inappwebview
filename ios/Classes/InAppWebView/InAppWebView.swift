@@ -1593,13 +1593,21 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate, WKNavi
                  withError error: Error) {
    print("ERROR XXXXXXXX: \(error)")
    let code = (error as NSError).code
-    if code != -999 {
+    if code == -999 {
     return;
        } 
         webView(view, didFail: navigation, withError: error)
     }
     
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        
+        print("ERROR XXXXXXXX: \(error)")
+   let code = (error as NSError).code
+    if code == -999 {
+    return;
+       } 
+        
+        
         InAppWebView.credentialsProposed = []
         
         var urlError = url?.absoluteString
